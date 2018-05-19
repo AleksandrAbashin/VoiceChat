@@ -82,7 +82,7 @@ public class Client {
         }
     }
 
-    /** Должен запросить ввод адреса сервера и вернуть введенное значение**/
+    /** Запрашивает ввод адреса сервера и возвращает введенное значение**/
     protected String getServerAddress() {
 
         //ConsoleHelper.writeMessage("Введите адрес сервера: ");
@@ -109,14 +109,14 @@ public class Client {
     }
 
 
-    /** должен создавать и возвращать новый объект класса SocketThread **/
+    /** Создает и возвращает объект класса SocketThread **/
     protected SocketThread getSocketThread() {
 
         return new SocketThread();
     }
 
     /**  создает новое голосовое сообщение, используя переданный массив байтов
-     *  и отправляет его серверу через соединение connection **/
+     *  и отправляет его серверу через connection **/
 
     Transmitter transmitter = new Transmitter();
 
@@ -134,8 +134,8 @@ public class Client {
         }
 
 
-    /**  создает новое текстовое сообщение, используя переданный текст и отправляет его серверу через соединение connection **/
-    public void sendTextMessage(String text) {
+    /**  создает новое текстовое сообщение, используя переданный текст и отправляет его серверу через connection **/
+        public void sendTextMessage(String text) {
 
         try {
             connection.send(new Message(MessageType.TEXT, text));
@@ -177,7 +177,7 @@ public class Client {
 
             while (true) {
 
-                // В цикле получать сообщения, используя соединение connection
+                // В цикле получаем сообщения, используя соединение connection
                 Message message = connection.receive();
 
                 switch (message.getType()) {
@@ -261,7 +261,7 @@ public class Client {
 
         protected void  processIncomingVoice(byte [] arrayBytes){
 
-         //   ConsoleHelper.writeMessage("voice received!!!!!!!!!!!!!!!");
+
             AudioFormat format = new AudioFormat(16000.0f, 16, 2, true, false);
 
             SourceDataLine speakers;
